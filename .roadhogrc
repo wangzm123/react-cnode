@@ -1,0 +1,25 @@
+{
+  "entry": "src/index.js",
+  "extraBabelPlugins": [
+    "transform-runtime"
+  ],
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr"
+      ]
+    }
+  },
+  "theme": {
+    "primary-color": "#009a61"
+  },
+  "proxy": {
+    "/api": {
+      "target": "https://cnodejs.org",
+      "changeOrigin": "true",
+      "pathRewrite": {
+        "^api": ""
+      }
+    }
+  }
+}

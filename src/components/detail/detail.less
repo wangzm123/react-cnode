@@ -1,0 +1,57 @@
+.detail{
+  position: fixed;
+  height:100%;
+  .detailcontent{
+    height: calc(~"100% - 80px");
+    overflow:auto;
+     padding: 0 15px;
+  }
+  .contentall{
+    height: calc(~"100% - 40px");
+    overflow:auto;
+    padding-bottom:40px;
+    transition: all 0.5s;
+     padding: 0 15px;
+  }
+  img{
+    width:100%;
+  }
+  .footer{
+    position:fixed;
+    bottom:0px;
+    height:40px;
+    background: @primary-color;
+    width:100%;
+    color:#fff;
+    left:0;
+    transition: all 0.3s;
+    z-index:10;
+    span{
+      color:#fff;
+    }
+  }
+  .footerHide{
+    position:fixed;
+    opacity:0;
+    height:40px;
+    bottom:-40px;
+     width:100%;
+    color:#fff;
+    left:0;
+    background: @primary-color;
+    transition: all 0.3s;
+    z-index:10;
+    span{
+      color:#fff;
+    }
+  }
+  .footercontainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    i{
+      margin: 0 6px;
+    }
+  }
+}
+
