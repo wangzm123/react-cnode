@@ -3,7 +3,6 @@ import Back from '../components/Back'
  import Content from '../components/detail/content'
 function Detail ({location, detail,store }) {
   const {data, replies } = detail
-  console.log(123,store)
   const backProps = {
     id: location.pathname.split('/')[2],
     title: location.pathname.split('/')[3]
@@ -19,7 +18,8 @@ function Detail ({location, detail,store }) {
     </div>
   )
 }
-function mapStateToProps({detail}){
+function mapStateToProps({detail,indexPage}){
+  console.log(1122,detail,indexPage)
   return {detail}
 }
 export default connect (mapStateToProps)(Detail);

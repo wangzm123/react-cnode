@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './IndexPage.css';
+import Styles from './IndexPage.less';
 import List from '../components/List'
 import Header from '../components/Header'
+import {NavLink} from 'dva/router'
+import {Icon} from 'antd'
 function IndexPage({location, dispatch, indexPage}) {
   const {current, dataSource, pageNumber} = indexPage
   const headerProps = {
@@ -31,7 +33,9 @@ function IndexPage({location, dispatch, indexPage}) {
   return (
     <div>
       <Header {...headerProps}/>
-      <List {...listProps}/>
+      <div className={Styles.list}>
+        <List {...listProps}/>
+      </div>
       <ul className={Styles.bottom} >
         <li><NavLink  to='/' className={Styles.bottomlink} activeClassName={Styles.active}><Icon type="home" /></NavLink ></li>
         <li><NavLink to='/submit' className={Styles.bottomlink}><Icon type="edit" /></NavLink></li>

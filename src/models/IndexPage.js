@@ -39,10 +39,12 @@ export default {
     *fetch (action,{call, put, select}){
       let total= yield select(state => state.indexPage.dataSource)
       const res = yield call (Services.fetch, {...action.payload})
+      const dataSource = total.concat(res.data.data)
+      console.log(88888,total,res.data.data)
       yield put({
         type:'setList',
         payload:{
-          dataSource: res.data.data,
+          dataSource: dataSource,
           pageNumber:action.payload.pageNumber
         }
       })

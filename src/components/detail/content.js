@@ -64,7 +64,6 @@ class Content extends  React.Component{
 
   render () {
     const { data } = this.props
-    console.log(this.props)
     return (
       <div className={Styles.detail } >
         <div dangerouslySetInnerHTML= {this.setHTML(data.content)}
