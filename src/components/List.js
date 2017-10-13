@@ -49,9 +49,10 @@ class List extends React.Component{
         onTouchEnd={this.touchLeave.bind(this)}>
         <div id="total">
         {dataSource.map((item,index) => {
+          const path=`/detail/${item.id}/${item.title}`
           return (
             <div key={item.id} ref={index == dataSource.length-1 ? 'last' : ''} id={index == 0 ? 'first' : ''}>
-              <h3 className={Styles.title}>{item.title}</h3>
+              <Link to={path}><h3 className={Styles.title}>{item.title}</h3></Link>
               <div className={Styles.content}>
                 <img src={item.author.avatar_url} />
                 <div className={Styles.loginname}><p>{item.author.loginname}</p></div>

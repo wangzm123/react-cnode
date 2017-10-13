@@ -1,9 +1,9 @@
 import React from 'react';
-import { HashRouter, Route, Switch, Redirect } from 'dva/router';
+import { Router, Route, Switch, Redirect } from 'dva/router';
 import dynamic from 'dva/dynamic';
 import IndexPage from './routes/IndexPage';
 import Con from './routes/Main';
-function RouterConfig({ hasHistory, app }) {
+function RouterConfig({ history, app }) {
   const IndexPage = dynamic({
     app,
     component: () =>  import('./routes/IndexPage')
@@ -30,7 +30,7 @@ function RouterConfig({ hasHistory, app }) {
 
 
   return (
-    <HashRouter history={hasHistory}>
+    <Router history={history}>
       <Switch>
         <Route path="/" exact component={IndexPage} />
         <Route path='/detail/:id/:name'  component={Detail} />
@@ -38,7 +38,7 @@ function RouterConfig({ hasHistory, app }) {
         <Route path='/user' component={User}/>
         <Route path='/notfound' component={NotFound}/>
       </Switch>
-    </HashRouter>
+    </Router>
   );
 }
 

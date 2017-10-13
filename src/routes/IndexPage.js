@@ -34,8 +34,7 @@ function IndexPage({location, dispatch, indexPage, childern}) {
     <div>
       <Header {...headerProps}/>
       <div className={Styles.list}>
-        {/*<List {...listProps}/>*/}
-        {childern}
+        <List {...listProps}/>
       </div>
       <ul className={Styles.bottom} >
         <li><NavLink  to='/' className={Styles.bottomlink} activeClassName={Styles.active}><Icon type="home" /></NavLink ></li>

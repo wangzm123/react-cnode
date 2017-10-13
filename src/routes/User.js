@@ -15,6 +15,7 @@ console.log(photo)
  return (
     <div>
      <UserContent {...userProps}/>
+     
     </div>
   )
 }

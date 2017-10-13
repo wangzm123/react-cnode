@@ -1,6 +1,8 @@
 import React, {Compont} from 'react'
 import {Icon} from 'antd'
+import {Link} from 'dva/router'
 import Styles from './user.less'
+import Footer from'../Footer'
 class UserContent extends React.Component{
   constructor (props) {
     super(props)
@@ -42,18 +44,22 @@ class UserContent extends React.Component{
           <div>
            {
             this.state.currentData ? this.state.currentData.map((item, index) => {
+              const path=`/detail/${item.id}/${item.title}`
               return (
                 <div key={item.id}>
-                  <p>
-                    <span>{item.title}</span>
-                    <span>{item.last_reply_at}</span>
-                  </p>
+                  <Link to={path}>
+                    <p>
+                      <span>{item.title}</span>
+                      <span>{item.last_reply_at}</span>
+                    </p>
+                    </Link>
                 </div>
               )
             }) : ''
            }
           </div>
         </div>
+        <Footer />
       </div>
     )
   }
