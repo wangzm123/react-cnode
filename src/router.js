@@ -12,13 +12,32 @@ function RouterConfig({ hasHistory, app }) {
     app,
     models: () => [import ('./models/Detail')],
     component: () => import ('./routes/Detail'),
+  });
+  const Login = dynamic ({
+    app,
+    models: () => [import ('./models/User')],
+    component: () => import ('./routes/Login')
   })
+  const User = dynamic ({
+    app,
+    models: () => [import ('./models/User')],
+    component: () => import ('./routes/User')
+  })
+  const NotFound = dynamic ({
+    app,
+    component: () => import ('./routes/Notfound')
+  })
+
+
   return (
     <HashRouter history={hasHistory}>
-      <Con>
+      <Switch>
         <Route path="/" exact component={IndexPage} />
         <Route path='/detail/:id/:name'  component={Detail} />
-      </Con>
+        <Route path='/login' component={Login}/>
+        <Route path='/user' component={User}/>
+        <Route path='/notfound' component={NotFound}/>
+      </Switch>
     </HashRouter>
   );
 }

@@ -1,4 +1,9 @@
 import fetch from 'dva/fetch';
+import Promise from 'promise-polyfill';
+
+if (!window.Promise) {
+window.Promise = Promise;
+}
 
 function parseJSON(response) {
   return response.json();
@@ -22,9 +27,17 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
-  return fetch(url, options)
+  let headers = {};
+
+  if (options && options.method !== 'GET') {
+    headers = {
+      'content-type': 'application/json'
+    };
+  }
+
+  return fetch(url, { ...options, headers, credentials: 'same-origin' })
     .then(checkStatus)
     .then(parseJSON)
-    .then(data => ({ data }))
+    .then(data => ({data}))
     .catch(err => ({ err }));
 }

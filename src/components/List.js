@@ -18,23 +18,35 @@ class List extends React.Component{
       this.setState({
         loading: true
       })
-      if(this.state.loading){
+    }
+  }
+  touchLeave (e) {
+    const scrollTop = this.refs.list.scrollTop
+    const viewHeight = document.body.clientHeight-80
+    const totalHeight = document.getElementById("total") ? document.getElementById("total").offsetHeight-40 : 0
+    if(totalHeight-viewHeight-scrollTop < 40) {
         const pageNumber= this.props.pageNumber
         this.props.fetch({
           pageNumber:pageNumber + 1,
-          current:this.props.current == 1 ? 'all' : this.props.current == 2 ? 'good' : this.props.current == 3 ? 'share' : this.props.current == 4 ? 'ask' : 'job'
+          current:this.props.current == 1 ? 'all' : this.props.current == 2 ? 'good' : this.props.current == 3 ? 'share' : this.props.current == 4 ? 'ask' : this.props.current == 5 ? 'job' : 'dev'
         })
-       this.setState({
-         loading:false
-       })
-      }
     }
+  }
+  componentWillReceiveProps (newProps) {
+    this.setState({
+      loading: false
+    })
   }
   render () {
     const { dataSource, pageNumber } = this.props
     const height= document.body.clientHeight-80
     return (
-      <div className={Styles.list}  ref="list" id="list" style={{height:height+'px'}} onTouchMove={this.mouseMove.bind(this)}>
+      <div className={Styles.list}
+        ref="list"
+        id="list"
+        style={{height:height+'px'}}
+        onTouchMove={this.mouseMove.bind(this)}
+        onTouchEnd={this.touchLeave.bind(this)}>
         <div id="total">
         {dataSource.map((item,index) => {
           return (
@@ -51,6 +63,9 @@ class List extends React.Component{
             </div>
           )
         })}
+        {
+          this.state.loading ? <div><h1>加载中...</h1></div> : ''
+        }
         </div>
       </div>
     )

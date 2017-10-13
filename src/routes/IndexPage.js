@@ -5,7 +5,7 @@ import List from '../components/List'
 import Header from '../components/Header'
 import {NavLink} from 'dva/router'
 import {Icon} from 'antd'
-function IndexPage({location, dispatch, indexPage}) {
+function IndexPage({location, dispatch, indexPage, childern}) {
   const {current, dataSource, pageNumber} = indexPage
   const headerProps = {
     current,
@@ -34,13 +34,14 @@ function IndexPage({location, dispatch, indexPage}) {
     <div>
       <Header {...headerProps}/>
       <div className={Styles.list}>
-        <List {...listProps}/>
+        {/*<List {...listProps}/>*/}
+        {childern}
       </div>
       <ul className={Styles.bottom} >
         <li><NavLink  to='/' className={Styles.bottomlink} activeClassName={Styles.active}><Icon type="home" /></NavLink ></li>
         <li><NavLink to='/submit' className={Styles.bottomlink}><Icon type="edit" /></NavLink></li>
         <li><NavLink to='/message' className={Styles.bottomlink}><Icon type="message" /></NavLink></li>
-        <li><NavLink to='/my' className={Styles.bottomlink}><Icon type="user" /></NavLink></li>
+        <li><NavLink to='/login' className={Styles.bottomlink}><Icon type="user" /></NavLink></li>
       </ul>
     </div>
   );

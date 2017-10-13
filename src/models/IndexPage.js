@@ -25,7 +25,7 @@ export default {
         }
       })
       const res = yield call (Services.fetch, {
-        current: payload.payload == 1 ? 'all' : payload.payload == 2 ? 'good' : payload.payload == 3 ? 'share' : payload.payload == 4 ? 'ask' : 'job',
+        current: payload.payload == 1 ? 'all' : payload.payload == 2 ? 'good' : payload.payload == 3 ? 'share' : payload.payload == 4 ? 'ask' : payload.payload == 5 ?'job' : 'dev',
         pageNumber:1
       })
       yield put({
@@ -40,7 +40,6 @@ export default {
       let total= yield select(state => state.indexPage.dataSource)
       const res = yield call (Services.fetch, {...action.payload})
       const dataSource = total.concat(res.data.data)
-      console.log(88888,total,res.data.data)
       yield put({
         type:'setList',
         payload:{
